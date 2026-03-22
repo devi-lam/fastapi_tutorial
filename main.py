@@ -1,6 +1,7 @@
 # HTTP METHOD GET
 from fastapi import FastAPI
 from typing import Optional
+from pydantic import BaseModel
 
 # Baris ini membuat instance aplikasi FastAPI.
 app = FastAPI()
@@ -32,5 +33,18 @@ def greet_name(name: str, age:Optional[int] = None):
 
 
 # HTTP METHOD POST
+class Student(BaseModel):
+    name: str
+    age: int
+    roll: int
+
+@app.post("/create_student")
+def create_student(student: Student):
+    return {
+        "name": student.name,
+        "age": student.age,
+        "roll": student.roll
+    }
 
 
+# CRUD OPERATION
