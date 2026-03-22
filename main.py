@@ -47,4 +47,3 @@ def create_student(student: Student):
     }
 
 
-# CRUD OPERATION
